@@ -12,8 +12,8 @@ def get_words_from_json():
     words_dict = {}
     for foo in news_dict["rss"]["channel"]["items"]:
         for word in re.findall("\w{6,}", foo["description"]):
-            words_dict.setdefault(word, 0)
-            words_dict[word] += 1
+            words_dict.setdefault(word.lower(), 0)
+            words_dict[word.lower()] += 1
 
     return words_dict
 
@@ -27,8 +27,8 @@ def get_words_from_xml():
     words_dict = {}
     for xmli in xml_items:
         for word in re.findall("\w{6,}", xmli.text):
-            words_dict.setdefault(word, 0)
-            words_dict[word] += 1
+            words_dict.setdefault(word.lower(), 0)
+            words_dict[word.lower()] += 1
 
     return words_dict
 
